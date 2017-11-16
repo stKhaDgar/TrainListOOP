@@ -157,7 +157,7 @@ string TrainList::printTrain()
 	{
 		string print = "";
 		int numOfStr = 1;
-		int maxOfElInStr = 0;
+		unsigned int maxOfElInStr = 0;
 
 		for (auto ptr = begin(); ptr != end();)
 		{
@@ -190,37 +190,89 @@ string TrainList::printTrain()
 }
 
 // Фильтр по типу/наличию кондиционера/наличию wi-fi
-string TrainList::filter(std::string _type, bool _cond, bool _wifi)
+string TrainList::filter(std::string _type, int _cond, int _wifi)
 {
 	if (size() > 0)
 	{
 		string print = "";
 		int numOfStr = 1;
-		int maxOfElInStr = 0;
+		unsigned int maxOfElInStr = 0;
+
 
 		for (auto ptr = begin(); ptr != end();)
 		{
+			RailwayCarriage *temp = ptr;
+
+			// Фильтрация по типу вагона
 			if (ptr->get_TypeOfRC() == _type)
 			{
-				// Нахождение максимального количества элементов в строке Типа вагона
-				for (auto ptr = begin(); ptr != end();)
-				{
-					string numOfElInStr = _type;
-					if (maxOfElInStr < numOfElInStr.size())
-					{
-						maxOfElInStr = numOfElInStr.size();
-					}
-					ptr = ptr->next;
-				}
-
-				string TypeOfRC = ptr->get_TypeOfRC();
-				for (TypeOfRC.size(); TypeOfRC.size() < maxOfElInStr;)
-				{
-					TypeOfRC = TypeOfRC + " ";
-				}
-				print = print + " " + to_string(numOfStr) + ". " + "\"" + ptr->get_Number() + "\"  " + TypeOfRC + ptr->print();
+				
+				temp = ptr;
+			}
+			else if(_type == "")
+			{
+				temp = ptr;
+			}
+			else
+			{
+				temp = NULL;
 			}
 
+			// Фильтрация по налицию кондиционера
+			if(_cond != 2 && temp != NULL)
+			{
+				if (ptr->get_Conditioning() == _cond)
+				{
+					temp = ptr;
+				}
+				else
+				{
+					temp = NULL;
+				}
+			}
+			else if (_cond == 2 && temp != NULL)
+			{
+				temp = ptr;
+			}
+
+			// Фильтрация по налицию wi-fi
+			if(_wifi != 2 && temp != NULL)
+			{
+				if (ptr->get_WiFi() == _wifi)
+				{
+					temp = ptr;
+				}
+				else
+				{
+					temp = NULL;
+				}
+			}
+			else if (_wifi == 2 && temp != NULL)
+			{
+				temp = ptr;
+			}
+			
+			// Нахождение максимального количества элементов в строке Типа вагона
+			for (auto ptr = begin(); ptr != end();)
+			{
+				string numOfElInStr = ptr->get_TypeOfRC();
+				if (maxOfElInStr < numOfElInStr.size())
+				{
+					maxOfElInStr = numOfElInStr.size();
+				}
+				ptr = ptr->next;
+			}
+
+			string TypeOfRC = ptr->get_TypeOfRC();
+
+			for (TypeOfRC.size(); TypeOfRC.size() < maxOfElInStr;)
+			{
+				TypeOfRC = TypeOfRC + " ";
+			}
+			if (temp != NULL)
+			{
+				print = print + " " + to_string(numOfStr) + ". " + "\"" + ptr->get_Number() + "\"  " + TypeOfRC + ptr->print();
+			}
 			numOfStr++;
 			ptr = ptr->next;
 		}

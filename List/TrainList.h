@@ -25,7 +25,7 @@ public:
 	RailwayCarriage* begin();
 	RailwayCarriage* end();
 	string printTrain();
-	string filter(string _type, bool _cond, bool _wifi);
+	string filter(string _type, int _cond, int _wifi);
 
 	
 };
