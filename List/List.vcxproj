@@ -148,9 +148,11 @@
   <ItemGroup>
     <ClCompile Include="RailwayCarriage.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TrainList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RailwayCarriage.h" />
+    <ClInclude Include="TrainList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

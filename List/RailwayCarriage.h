@@ -1,3 +1,6 @@
+#ifndef RAILWAY_INCLUDED
+#define RAILWAY_INCLUDED
+
 #include <iostream>
 
 class RailwayCarriage
@@ -29,3 +32,5 @@ public:
 
 	RailwayCarriage *next;
 };
+
+#endif

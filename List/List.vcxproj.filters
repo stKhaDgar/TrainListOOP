@@ -21,9 +21,15 @@
     <ClCompile Include="RailwayCarriage.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="TrainList.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RailwayCarriage.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="TrainList.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

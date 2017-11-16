@@ -8,10 +8,10 @@ RailwayCarriage::RailwayCarriage()
 RailwayCarriage::RailwayCarriage(std::string _Number, std::string _Type, bool _Conditioning, bool _WiFi)
 {
 
-	Number = _Number;
-	Conditioning = _Conditioning;
-	WiFi = _WiFi;
-	TypeOfRC = _Type;
+	this->Number = _Number;
+	this->Conditioning = _Conditioning;
+	this->WiFi = _WiFi;
+	this->TypeOfRC = _Type;
 	if (_Type == "Плацкарт")
 	{
 		NofPS = 54; // Плацкарт
@@ -75,7 +75,7 @@ void RailwayCarriage::set_NofPS(int nofps)
 	this->NofPS = nofps;
 }
 
-
+// Вывод вагона на экран
 std::string RailwayCarriage::print()
 {
 	std::string print = "   Мест: ";
