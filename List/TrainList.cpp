@@ -10,6 +10,7 @@ void TrainList::AddFirst(RailwayCarriage* vagon)
 	{
 		temp->set_Number(vagon->get_Number());
 		temp->set_TypeOfRC(vagon->get_TypeOfRC());
+		temp->set_NofPS(vagon->get_NofPS());
 		temp->set_Conditioning(vagon->get_Conditioning());
 		temp->set_WiFi(vagon->get_WiFi());
 		this->first = temp;
@@ -20,6 +21,7 @@ void TrainList::AddFirst(RailwayCarriage* vagon)
 		temp->next = first;
 		temp->set_Number(vagon->get_Number());
 		temp->set_TypeOfRC(vagon->get_TypeOfRC());
+		temp->set_NofPS(vagon->get_NofPS());
 		temp->set_Conditioning(vagon->get_Conditioning());
 		temp->set_WiFi(vagon->get_WiFi());
 		first = temp;

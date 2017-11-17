@@ -12,22 +12,22 @@ RailwayCarriage::RailwayCarriage(std::string _Number, std::string _Type, bool _C
 	this->Conditioning = _Conditioning;
 	this->WiFi = _WiFi;
 	this->TypeOfRC = _Type;
-	if (_Type == "Плацкарт")
+	
+	if (_Type == "Reserved")
 	{
-		NofPS = 54; // Плацкарт
-		
+		set_NofPS(54); // Плацкарт
 	}
-	else if (_Type == "Купе")
+	else if (_Type == "Compartment")
 	{
-		this->NofPS = 36; // Купе
+		set_NofPS(36); // Купе
 	}
-	else if (_Type == "Люкс")
+	else if (_Type == "Suite")
 	{
-		NofPS = 20; // Люкс
+		set_NofPS(20); // Люкс
 	}
-	else if (_Type == "Вагон-ресторан" || _Type == "Ресторан" || _Type == "Вагон ресторан")
+	else if (_Type == "Restaurant")
 	{
-		NofPS = 00; // Вагон ресторан
+		set_NofPS(0); // Вагон ресторан
 	}
 }
 
