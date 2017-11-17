@@ -62,6 +62,7 @@ void TrainList::AddPos(RailwayCarriage* vagon, int pos)
 	RailwayCarriage *temp = new RailwayCarriage;
 	temp->set_Number(vagon->get_Number());
 	temp->set_TypeOfRC(vagon->get_TypeOfRC());
+	temp->set_NofPS(vagon->get_NofPS());
 	temp->set_Conditioning(vagon->get_Conditioning());
 	temp->set_WiFi(vagon->get_WiFi());
 
@@ -112,7 +113,7 @@ void TrainList::RemovePos(int pos)
 		help->next = del->next;
 		delete del;
 	}
-	else if (pos == size() && pos > 2)
+	else if (pos == size() && pos > 1)
 	{
 		help = first;
 		for (int i = 1; i < pos - 1; i++)
