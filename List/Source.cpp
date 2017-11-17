@@ -66,7 +66,7 @@ int main()
 				cin >> menu;
 				if (menu < 2 || menu > 7 || (menu == 5 && Train.size() == 0))
 				{
-					if (menu < 2 || menu > 7)
+					if (menu < 1 || menu > 7)
 					{
 						cout << "Такого пункта меню не существует, попробуйте ещё раз.\n";
 					}
@@ -74,7 +74,12 @@ int main()
 					{
 						cout << "Ваш состав пуст. Сначала добавьте вагоны.\n";
 					}
+					else if (menu == 1)
+					{
+						cout << "Вы уже в главном меню.\n";
+					}
 				}
+				
 			} while (menu < 2 || menu > 7 || (menu == 5 && Train.size() == 0));
 			
 			break;
@@ -379,7 +384,7 @@ int main()
 			cout << Train.filter(typeofrc, intCond, intWifi);
 			cout << "\n----------------------------------------------------------------------------\n\n";
 			cout << "1. Главное меню.\n";
-			cout << "2. Новый фильтр.\n";
+			cout << "2. Новый фильтр.\n\n";
 
 			do
 			{
