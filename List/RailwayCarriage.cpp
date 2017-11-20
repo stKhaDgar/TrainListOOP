@@ -78,7 +78,8 @@ void RailwayCarriage::set_NofPS(int nofps)
 // Вывод вагона на экран
 std::string RailwayCarriage::print()
 {
-	std::string print = "   Мест: ";
+	
+	std::string print = "\"" + get_Number() + "\"  " + TypeOfRC + "   Мест: ";
 		if(get_NofPS() == 0)
 		{ 
 			print = print + " " + std::to_string(get_NofPS());
