@@ -375,8 +375,20 @@ int main()
 				}
 				num++;
 			}
-			cin >> menu;
-			menu = 1;
+
+			do
+			{
+				cout << "\n\nВыберите необходимый пункт меню: ";
+				cin >> menu;
+				if (menu != 1 && menu != 2)
+				{
+					cout << "Такого пункта меню не существует, попробуйте ещё раз.\n";
+				}
+			} while (menu != 1 && menu != 2);
+			if (menu == 2)
+			{
+				menu = 6;
+			}
 			break;
 		}
 	}
