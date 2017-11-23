@@ -357,7 +357,7 @@ int main()
 
 			do
 			{
-				cout << "¬ведите тип вагона(Reserved, Compartment, Suite, Restaurant): ";
+				cout << "¬ведите тип вагона(Reserved, Compartment, Suite, Restaurant): \n";
 				cin >> typeofrc;
 				if (!typeofrc.compare("Reserved") != 1 && !typeofrc.compare("Compartment") != 1 && !typeofrc.compare("Suite") != 1 && !typeofrc.compare("Restaurant") != 1)
 				{
@@ -366,10 +366,15 @@ int main()
 			} while (!typeofrc.compare("Reserved") != 1 && !typeofrc.compare("Compartment") != 1 && !typeofrc.compare("Suite") != 1 && !typeofrc.compare("Restaurant") != 1);
 
 			// STL
-
-			list<RailwayCarriage*>::iterator ptrsad = std::find(begin(Train), begin(Train), [&](RailwayCarriage* v){return 0;} );
-			cout << (*ptrsad)->get_TypeOfRC();
-
+			int num = 1;
+			for (auto ptrType = Train.begin(); ptrType != Train.end(); ++ptrType)
+			{
+				if ((*ptrType)->get_TypeOfRC() == typeofrc)
+				{
+					cout << num << ". " << (*ptrType)->print();
+				}
+				num++;
+			}
 			cin >> menu;
 			menu = 1;
 			break;
