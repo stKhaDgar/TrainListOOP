@@ -4,6 +4,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <list>
+#include <algorithm>
 using namespace std;
 
 
@@ -39,7 +40,7 @@ int main()
 	string wifi; bool bwifi;
 	int pos;
 	
-	while (menu != 6)
+	while (menu != 7)
 	{
 		// STL
 
@@ -74,14 +75,15 @@ int main()
 			cout << "3. Добавить вагон в конец.\n";
 			cout << "4. Добавить вагон в позицию.\n";
 			cout << "5. Удалить вагон в позиции.\n";
-			cout << "6. Выход из программы.\n\n";
+			cout << "6. Поиск по типу вагона.\n";
+			cout << "7. Выход из программы.\n\n";
 			do
 			{
 				cout << "Выберите необходимый пункт меню: ";
 				cin >> menu;
 				if (menu < 2 || menu > 7 || (menu == 5 && Train.size() == 0))
 				{
-					if (menu < 1 || menu > 7)
+					if (menu < 1 || menu > 8)
 					{
 						cout << "Такого пункта меню не существует, попробуйте ещё раз.\n";
 					}
@@ -333,19 +335,42 @@ int main()
 
 			do
 			{
-				cout << "Укажите позицию вагона, который необходимо удалить: ";
-				cin >> pos;
-				if (pos < 1 || pos > Train.size())
+				cout << "Введите тип вагона(Reserved, Compartment, Suite, Restaurant): ";
+				cin >> typeofrc;
+				if (!typeofrc.compare("Reserved") != 1 && !typeofrc.compare("Compartment") != 1 && !typeofrc.compare("Suite") != 1 && !typeofrc.compare("Restaurant") != 1)
 				{
-					cout << "Такого варианта ответа не существует. Попробуйте ещё раз.\n";
+					cout << "Такого типа к сожалению в моей программе не существует(та и по заданию как бы не было :)\n";
 				}
-			} while (pos < 1 || pos > Train.size());
+			} while (!typeofrc.compare("Reserved") != 1 && !typeofrc.compare("Compartment") != 1 && !typeofrc.compare("Suite") != 1 && !typeofrc.compare("Restaurant") != 1);
 
 			// STL
 
 			advance(ptrs, pos-1);
 			Train.erase(ptrs);
 
+			menu = 1;
+			break;
+			
+		// 6. Поиск вагона по его типу
+		case(6):
+			cout << "---------------------- 6. Поиск вагона по его типу ---------------------\n\n";
+
+			do
+			{
+				cout << "Введите тип вагона(Reserved, Compartment, Suite, Restaurant): ";
+				cin >> typeofrc;
+				if (!typeofrc.compare("Reserved") != 1 && !typeofrc.compare("Compartment") != 1 && !typeofrc.compare("Suite") != 1 && !typeofrc.compare("Restaurant") != 1)
+				{
+					cout << "Такого типа к сожалению в моей программе не существует(та и по заданию как бы не было :)\n";
+				}
+			} while (!typeofrc.compare("Reserved") != 1 && !typeofrc.compare("Compartment") != 1 && !typeofrc.compare("Suite") != 1 && !typeofrc.compare("Restaurant") != 1);
+
+			// STL
+
+			list<RailwayCarriage*>::iterator ptrsad = std::find(begin(Train), begin(Train), [&](RailwayCarriage* v){return 0;} );
+			cout << (*ptrsad)->get_TypeOfRC();
+
+			cin >> menu;
 			menu = 1;
 			break;
 		}
